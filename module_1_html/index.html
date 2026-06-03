@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Community Event Portal</title>
+
+    <style>
+      #welcomeBanner {
+        background-color: blue;
+        color: white;
+        padding: 10px;
+      }
+
+      .highlight {
+        background-color: yellow;
+      }
+
+      .event-image {
+        width: 150px;
+        height: 100px;
+        border: 2px solid black;
+      }
+
+      form {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <a href="#home">Home</a> | <a href="#events">Events</a> |
+      <a href="#contact">Contact</a> |
+      <a href="help.html" target="_blank">Help</a>
+    </nav>
+    <main>
+      <section id="home">
+        <div id="welcomeBanner">
+          <h1>Welcome to Local Community Event Portal</h1>
+
+          <p>
+            <span style="color: red; font-weight: bold"> Special Offer: </span>
+            Register today and get free goodies.
+          </p>
+        </div>
+      </section>
+
+      <section id="events">
+        <h2 class="highlight">Community Events</h2>
+
+        <table>
+          <tr>
+            <td>
+              <img
+                src="images/event1.jpg"
+                alt="Event 1"
+                title="Tech Meetup"
+                class="event-image"
+              />
+              <p>Tech Meetup</p>
+            </td>
+
+            <td>
+              <img
+                src="images/event2.jpg"
+                alt="Event 2"
+                title="Food Festival"
+                class="event-image"
+              />
+              <p>Food Festival</p>
+            </td>
+
+            <td>
+              <img
+                src="images/event3.jpg"
+                alt="Event 3"
+                title="Book Fair"
+                class="event-image"
+              />
+              <p>Book Fair</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <img
+                src="images/event4.jpg"
+                alt="Event 4"
+                title="Workshop"
+                class="event-image"
+              />
+              <p>Workshop</p>
+            </td>
+
+            <td>
+              <img
+                src="images/event5.jpg"
+                alt="Event 5"
+                title="Music Night"
+                class="event-image"
+              />
+              <p>Music Night</p>
+            </td>
+
+            <td>
+              <img
+                src="images/event6.jpg"
+                alt="Event 6"
+                title="Marathon"
+                class="event-image"
+                ondblclick="enlargeImage(this)"
+              />
+              <p>Marathon</p>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Event Registration Form</h2>
+
+        <form>
+          <label>Name:</label>
+          <input type="text" placeholder="Enter Name" required autofocus />
+
+          <br /><br />
+
+          <label>Email:</label>
+          <input type="email" placeholder="Enter Email" required />
+
+          <br /><br />
+
+          <label>Date:</label>
+          <input type="date" required />
+
+          <br /><br />
+
+          <label>Phone:</label>
+          <input type="text" onblur="validatePhone()" />
+
+          <br /><br />
+
+          <label>Event Type:</label>
+
+          <select onchange="showFee()">
+            <option>Select Event</option>
+            <option>Tech Meetup</option>
+            <option>Food Festival</option>
+            <option>Workshop</option>
+          </select>
+
+          <br /><br />
+
+          <label>Message:</label>
+
+          <textarea placeholder="Enter Message" onkeyup="countCharacters()">
+          </textarea>
+
+          <br /><br />
+
+          <button type="submit" onclick="showConfirmation()">Register</button>
+
+          <br /><br />
+
+          <output> Confirmation Message </output>
+        </form>
+      </section>
+
+      <section>
+        <h2>Event Feedback</h2>
+
+        <textarea placeholder="Give Feedback" onkeyup="countCharacters()">
+        </textarea>
+
+        <p>Character Count</p>
+      </section>
+
+      <section>
+        <h2>Event Promo Video</h2>
+        <video width="400" controls oncanplay="videoReady()">
+          <source src="videos/promo.mp4" type="video/mp4" />
+        </video>
+      </section>
+
+      <section>
+        <h2>User Preferences</h2>
+
+        <button onclick="savePreference()">Save Preference</button>
+
+        <button onclick="clearPreferences()">Clear Preferences</button>
+      </section>
+
+      <section>
+        <h2>Nearby Events</h2>
+
+        <button onclick="findLocation()">Find Nearby Events</button>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+
+        <p>Email: support@communityportal.com</p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2026 Community Event Portal</p>
+    </footer>
+  </body>
+</html>

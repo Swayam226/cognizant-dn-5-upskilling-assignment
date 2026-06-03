@@ -1,0 +1,321 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local Community Event Portal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      body {
+        background-color: #f5f5f5;
+      }
+    </style>
+    <!-- Internal CSS as asked in assignment -->
+  </head>
+
+  <body>
+    <!-- Navigation -->
+
+    <nav>
+      <a href="#home">Home</a> | <a href="#events">Events</a> |
+      <a href="#contact">Contact</a> |
+      <a href="help.html" target="_blank">Help</a>
+    </nav>
+
+    <!-- Main -->
+
+    <main>
+      <section id="home">
+        <div id="mainHeader">
+          <!-- inline css as asked in assignment -->
+          <h1 style="color: red">Welcome to Local Community Event Portal</h1>
+          <p>
+            <span style="color: red; font-weight: bold"> Special Offer: </span>
+            Register today and get free goodies.
+          </p>
+        </div>
+      </section>
+
+      <section id="events" class="eventCard">
+        <h2 class="highlight">Community Events</h2>
+
+        <table>
+          <tr>
+            <td>
+              <img
+                src="images/event1.jpg"
+                alt="Tech Meetup"
+                title="Tech Meetup"
+                class="event-image"
+              />
+              <p>Tech Meetup</p>
+            </td>
+
+            <td>
+              <img
+                src="images/event2.jpg"
+                alt="Food Festival"
+                title="Food Festival"
+                class="event-image"
+              />
+              <p>Food Festival</p>
+            </td>
+
+            <td>
+              <img
+                src="images/event3.jpg"
+                alt="Book Fair"
+                title="Book Fair"
+                class="event-image"
+              />
+              <p>Book Fair</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <img
+                src="images/event4.jpg"
+                alt="Workshop"
+                title="Workshop"
+                class="event-image"
+              />
+              <p>Workshop</p>
+            </td>
+
+            <td>
+              <img
+                src="images/event5.jpg"
+                alt="Music Night"
+                title="Music Night"
+                class="event-image"
+              />
+              <p>Music Night</p>
+            </td>
+
+            <td>
+              <img
+                src="images/event6.jpg"
+                alt="Marathon"
+                title="Marathon"
+                class="event-image"
+                ondblclick="enlargeImage(this)"
+              />
+              <p>Marathon</p>
+            </td>
+          </tr>
+        </table>
+      </section>
+
+      <section>
+        <h2>Event Registration Form</h2>
+
+        <form id="registrationForm">
+          <label>Name:</label>
+          <input type="text" placeholder="Enter Name" required autofocus />
+
+          <br /><br />
+
+          <label>Email:</label>
+          <input type="email" placeholder="Enter Email" required />
+
+          <br /><br />
+
+          <label>Date:</label>
+          <input type="date" required />
+
+          <br /><br />
+
+          <label>Phone:</label>
+          <input type="text" onblur="validatePhone(this)" />
+
+          <br /><br />
+
+          <label>Event Type:</label>
+
+          <select id="eventType" onchange="showFee()">
+            <option value="">Select Event</option>
+            <option value="100">Tech Meetup</option>
+            <option value="200">Food Festival</option>
+            <option value="300">Workshop</option>
+          </select>
+
+          <p id="fee"></p>
+
+          <label>Message:</label>
+
+          <textarea
+            id="feedback"
+            placeholder="Enter Message"
+            onkeyup="countCharacters()"
+          >
+          </textarea>
+
+          <p id="charCount">Characters: 0</p>
+
+          <br />
+
+          <button type="button" onclick="showConfirmation()">Register</button>
+
+          <br /><br />
+
+          <output id="outputMessage"></output>
+        </form>
+      </section>
+
+      <section>
+        <h2>Event Promo Video</h2>
+
+        <video width="400" controls oncanplay="videoReady()">
+          <source src="videos/promo.mp4" type="video/mp4" />
+        </video>
+
+        <p id="videoMessage"></p>
+      </section>
+
+      <section>
+        <h2>User Preferences</h2>
+
+        <button onclick="savePreference()">Save Preference</button>
+
+        <button onclick="clearPreferences()">Clear Preferences</button>
+      </section>
+
+      <section>
+        <h2>Nearby Events</h2>
+
+        <button onclick="findLocation()">Find Nearby Events</button>
+
+        <p id="location"></p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+
+        <p>Email: support@communityportal.com</p>
+      </section>
+      <section>
+        <h2>Community News</h2>
+
+        <
+        <div class="news">
+          Community members are encouraged to participate in upcoming events and
+          workshops. New activities have been introduced this year to improve
+          engagement and bring people together. Volunteers are welcome to join
+          and contribute to various community programs. The local council has
+          announced several new initiatives focused on education, sports,
+          environmental awareness and cultural celebrations. Residents are
+          encouraged to register early and take part in activities happening
+          throughout the year. Community leaders believe these programs will
+          strengthen neighborhood relationships, encourage volunteering and
+          provide opportunities for learning and collaboration.
+        </div>
+        <div class="box">This box demonstrates margin, padding and border.</div>
+
+        <p class="hidden">This text uses visibility:hidden</p>
+
+        <p class="none">This text uses display:none</p>
+      </section>
+    </main>
+    <!-- Footer -->
+
+    <footer>
+      <p>&copy; 2026 Community Event Portal</p>
+    </footer>
+
+    <script>
+      function validatePhone(input) {
+        if (input.value.length < 10) {
+          alert("Enter a valid phone number");
+        }
+      }
+
+      function showFee() {
+        let fee = document.getElementById("eventType").value;
+
+        document.getElementById("fee").innerHTML = "Event Fee: ₹" + fee;
+      }
+
+      function showConfirmation() {
+        document.getElementById("outputMessage").value =
+          "Registration Submitted Successfully";
+      }
+
+      function enlargeImage(img) {
+        img.style.width = "250px";
+        img.style.height = "180px";
+      }
+
+      function countCharacters() {
+        let count = document.getElementById("feedback").value.length;
+
+        document.getElementById("charCount").innerHTML = "Characters: " + count;
+      }
+
+      function videoReady() {
+        document.getElementById("videoMessage").innerHTML =
+          "Video ready to play";
+      }
+
+      function savePreference() {
+        let selected = document.getElementById("eventType").value;
+
+        localStorage.setItem("eventType", selected);
+        sessionStorage.setItem("eventType", selected);
+
+        alert("Preference Saved");
+      }
+
+      window.onload = function () {
+        let saved = localStorage.getItem("eventType");
+
+        if (saved) {
+          document.getElementById("eventType").value = saved;
+        }
+      };
+
+      function clearPreferences() {
+        localStorage.clear();
+        sessionStorage.clear();
+
+        alert("Preferences Cleared");
+      }
+
+      function findLocation() {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            document.getElementById("location").innerHTML =
+              "Latitude: " +
+              position.coords.latitude +
+              "<br>Longitude: " +
+              position.coords.longitude;
+          },
+
+          function (error) {
+            document.getElementById("location").innerHTML =
+              "Location access denied or timed out";
+          },
+
+          {
+            enableHighAccuracy: true,
+            timeout: 5000,
+          },
+        );
+      }
+
+      window.onbeforeunload = function () {
+        return "You have unsaved form data.";
+      };
+    </script>
+  </body>
+</html>
