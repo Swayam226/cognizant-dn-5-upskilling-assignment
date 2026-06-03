@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 4 - DOM Manipulation</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      max-width: 580px;
+      margin: 60px auto;
+      padding: 0 24px;
+      background: #fffdf7;
+      color: #2b2b2b;
+    }
+    h1 {
+      font-size: 1.7rem;
+      margin-bottom: 28px;
+    }
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 10px 14px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input[type="text"]:focus {
+      border-color: #c0392b;
+    }
+    button {
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 4px;
+      border: none;
+      font-weight: 600;
+    }
+    #addBtn {
+      background: #c0392b;
+      color: #fff;
+    }
+    #addBtn:hover {
+      background: #a93226;
+    }
+    #removeBtn {
+      background: #ecf0f1;
+      color: #2b2b2b;
+      border: 2px solid #ccc;
+      margin-top: 8px;
+    }
+    #removeBtn:hover {
+      background: #dde1e3;
+    }
+    ul#itemList {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    ul#itemList li {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e8e8e8;
+      font-size: 1rem;
+    }
+    ul#itemList li:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>DOM Manipulation</h1>
+
+  <div class="form-row">
+    <input type="text" id="itemInput" placeholder="Enter an item..." />
+    <button id="addBtn">Add Item</button>
+  </div>
+  <button id="removeBtn">Remove All</button>
+
+  <ul id="itemList"></ul>
+
+  <script>
+    $(document).ready(function () {
+      $('#addBtn').click(function () {
+        var value = $('#itemInput').val().trim();
+        if (value !== '') {
+          var newItem = $('<li>').text(value);
+          $('#itemList').append(newItem);
+          $('#itemInput').val('');
+        }
+      });
+
+      $('#removeBtn').click(function () {
+        $('#itemList').empty();
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 1 - jQuery Library Inclusion</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 0 20px;
+      background: #f9f6f1;
+      color: #2c2c2c;
+    }
+    h1 {
+      font-size: 2rem;
+      border-bottom: 2px solid #2c2c2c;
+      padding-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+    .note {
+      background: #fff;
+      border-left: 4px solid #2c2c2c;
+      padding: 12px 16px;
+      margin-top: 30px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>jQuery Library Inclusion</h1>
+  <p id="hello">Hello World!</p>
+  <div class="note">
+    jQuery loaded via CDN. Open the browser console to see the logged element.
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      console.log($('#hello'));
+    });
+  </script>
+</body>
+</html>

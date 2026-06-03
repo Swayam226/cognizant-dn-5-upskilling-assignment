@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise 2 - Selecting Elements</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      max-width: 640px;
+      margin: 60px auto;
+      padding: 0 24px;
+      background: #1a1a2e;
+      color: #e0e0e0;
+    }
+    h1 {
+      font-size: 1.8rem;
+      color: #00d4aa;
+      margin-bottom: 24px;
+    }
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin: 12px 0;
+      padding: 10px 14px;
+      background: #16213e;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 24px;
+      background: #00d4aa;
+      color: #1a1a2e;
+      border: none;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    button:hover {
+      background: #00b890;
+    }
+  </style>
+</head>
+<body>
+  <h1>Original Heading</h1>
+  <p id="para1">This is paragraph one.</p>
+  <p id="para2">This is paragraph two — click the button to hide me.</p>
+  <button id="hideBtn">Hide Paragraph 2</button>
+
+  <script>
+    $(document).ready(function () {
+      $('h1').text('Heading Changed by jQuery');
+
+      $('#hideBtn').click(function () {
+        $('#para2').hide();
+      });
+    });
+  </script>
+</body>
+</html>
